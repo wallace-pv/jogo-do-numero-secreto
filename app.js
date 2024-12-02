@@ -1,5 +1,5 @@
 let listaDeNumerosSorteados = [];
-let numeroLimite = 10;
+let numeroLimite = 9999;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 1;
 
@@ -9,19 +9,20 @@ function exibirTextoNaTela(tag, texto){
     let campo = document.querySelector(tag);
     campo.innerHTML = texto;
     responsiveVoice.speak(texto,'Brazilian Portuguese Female', {rate:1.2});
-    if ('speechSynthesis' in window) {
-        let utterance = new SpeechSynthesisUtterance(texto);
-        utterance.lang = 'pt-BR'; 
-        utterance.rate = 1.2; 
-        window.speechSynthesis.speak(utterance); 
-    } else {
-        console.log("Web Speech API não suportada neste navegador.");
-    }
+    //biblioteca de voz alternativa
+    // if ('speechSynthesis' in window) {
+    //     let utterance = new SpeechSynthesisUtterance(texto);
+    //     utterance.lang = 'pt-BR'; 
+    //     utterance.rate = 1.2; 
+    //     window.speechSynthesis.speak(utterance); 
+    // } else {
+    //     console.log("Web Speech API não suportada neste navegador.");
+    // }
 }
 
 function exibirMensagemInicial() {
     exibirTextoNaTela('h1', 'Jogo do Numero Secreto');
-    exibirTextoNaTela('p', 'Escolha um numero entre 1 e 10');
+    exibirTextoNaTela('p', 'Escolha um numero entre 1 e 9999');
 }
 
 exibirMensagemInicial();
@@ -77,4 +78,3 @@ function reiniciarJogo(){
         document.getElementById('reiniciar').setAttribute('disabled',true);
     }
 }
-    
